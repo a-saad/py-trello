@@ -884,8 +884,9 @@ class Card(object):
 
         """
         self.fetch_actions('updateCard:idList')
-        date_str = self.actions[0]['date'][:-5]
-        return datetime.strptime(date_str, '%Y-%m-%dT%H:%M:%S')
+        if self.actions:
+            date_str = self.actions[0]['date'][:-5]
+            return datetime.strptime(date_str, '%Y-%m-%dT%H:%M:%S')
 
     @property
     def create_date(self):
